@@ -64,7 +64,7 @@ public class Controller extends Application {
   @FXML
   public void initialize() {
     // Populates the new Item Type ChoiceBox
-    newItemType.getItems().addAll("AUDIO", "VIDEO");
+    newItemType.getItems().addAll("Audio", "Visual", "AutoMobile", "VisualMoblile");
     newItemType.getSelectionModel().selectFirst();
 
     // Populates the quanitity Combobox
