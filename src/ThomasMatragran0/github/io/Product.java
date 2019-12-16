@@ -44,10 +44,10 @@ public abstract class Product implements Item {
 
   public static class Widget extends Product {
 
-    public Widget(String name, String manufacturer, ItemType T) {
+    public Widget(String name, String manufacturer, String T) {
       super(name);
       this.manufacturer = manufacturer;
-      T = type;
+      T = type.type;
     }
   }
 }

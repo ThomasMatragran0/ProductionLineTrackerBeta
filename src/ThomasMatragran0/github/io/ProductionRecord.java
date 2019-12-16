@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProductionRecord {
-   int productionNumber;
+  int productionNumber;
   private int productID;
   private String serialNumber;
   private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -27,9 +27,8 @@ public class ProductionRecord {
     this.productID = productID;
     this.productionNumber = productionNumber;
     this.serialNumber = serialNumber;
-      dateProduced = new Date();
+    dateProduced = new Date();
     this.dateProduced = dateProduced;
-
   }
 
   public int getProductionNum() {
@@ -71,7 +70,7 @@ public class ProductionRecord {
   public void setProdDate(Date dateProduced) {
     this.dateProduced = dateProduced;
   }
-
+  /** @brief This constructor creates a unique serial number */
   public ProductionRecord(Product P, int itemCount) {
     serialNumber = P.manufacturer.substring(0, 3) + P.type.code + "0000" + itemCount;
   }

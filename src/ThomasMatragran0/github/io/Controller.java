@@ -32,8 +32,10 @@ public class Controller extends Application {
   @FXML public TableColumn<?, ?> existingManufacturingCol;
   @FXML public TableColumn<?, ?> existingTypeCol;
   @FXML public ListView choosingProductListView;
+  static ObservableList<Product> data = FXCollections.observableArrayList();
 
   @FXML
+  /** @brief Button Handler for Adding Products to the database */
   void addProductButtonAction(ActionEvent event) {
     System.out.println("Product Added");
 
@@ -78,7 +80,7 @@ public class Controller extends Application {
       e.printStackTrace();
     }
   }
-
+  /** @brief This method populates GUI features and initializes starting values */
   @FXML
   public void initialize() {
 
@@ -107,7 +109,7 @@ public class Controller extends Application {
         Date date = (rs.getDate(4));
 
         // Populating production log TextArea
-        Product productProduced = new Widget("iPod", "Apple", ItemType.AUDIO);
+        Product productProduced = new Widget("iPod", "Apple", ItemType.AUDIO.type);
         // test constructor used when creating production records from user interface
         int numProduced = 3; // this will come from the combobox in the UI
         int itemCount = 0;
@@ -126,7 +128,10 @@ public class Controller extends Application {
       sql = "SELECT * FROM PRODUCT;";
       rs = stmt.executeQuery(sql);
 
-      while (rs.next()) {}
+      while (rs.next()) {
+        data.add(
+            new Widget(rs.getString("NAME"), rs.getString("TYPE"), rs.getString("MANUFACTURER")));
+      }
 
       // STEP 4: Clean-up environment
       stmt.close();
@@ -149,18 +154,20 @@ public class Controller extends Application {
     quantityComboBox.setEditable(true);
 
     // Setting the ObservableList to the TableView
-    ObservableList<Product> data = productLine();
+
     existingProductCol.setCellValueFactory(new PropertyValueFactory("name"));
-    existingManufacturingCol.setCellValueFactory(new PropertyValueFactory("Manufacturer"));
-    existingTypeCol.setCellValueFactory(new PropertyValueFactory("T"));
+    existingManufacturingCol.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    existingTypeCol.setCellValueFactory(new PropertyValueFactory("type"));
     existingTableView.setItems(data);
     choosingProductListView.setItems(data);
 
     testMultimedia();
   }
 
-  // This static, void method creates products of different media types and prints them to the
-  // console
+  /**
+   * @brief This static, void method creates products of different media types and prints them to
+   *     the console
+   */
   public static void testMultimedia() {
     AudioPlayer newAudioProduct =
         new AudioPlayer(
@@ -201,17 +208,9 @@ public class Controller extends Application {
       System.out.println(pr.getProdDate());
     }
   }
-
-  public static ObservableList<Product> productLine() {
-
-    return FXCollections.observableArrayList(
-        new Widget("Apple", "Smith", ItemType.AUDIO),
-        new Widget("Isabella", "Johnson", ItemType.AUDIO),
-        new Widget("Ethan", "Williams", ItemType.AUDIO),
-        new Widget("Emma", "Jones", ItemType.AUDIO),
-        new Widget("Michael", "Brown", ItemType.AUDIO));
-  }
-
+    /**
+     * @brief This method overrides the start method from Main and uses CSS
+     */
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("ProductionTracker.fxml"));

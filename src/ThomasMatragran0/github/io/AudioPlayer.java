@@ -8,6 +8,10 @@ public class AudioPlayer extends Product implements MultimediaControl {
   private String audioSpecification;
   private String mediaType;
 
+  /**
+   * @brief Constructor for AudioPlayer that takes parameters for name, manufacturer,
+   *     audioSpecification, and MediaType
+   */
   public AudioPlayer(
       String name, String manufacturer, String audioSpecification, String mediaType) {
     super(name);
@@ -37,7 +41,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   public void next() {
     System.out.println("Next");
   }
-
+  /** @brief Returns a string value for audioplayer */
   public String toString() {
     return super.toString()
         + "\n"

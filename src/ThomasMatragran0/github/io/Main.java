@@ -22,7 +22,7 @@ public class Main extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
   }
-
+  /** @brief This method establishes a database connection */
   public static void main(String[] args) {
     launch(args);
 
