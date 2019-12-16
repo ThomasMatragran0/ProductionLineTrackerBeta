@@ -47,6 +47,7 @@ public abstract class Product implements Item {
     public Widget(String name, String manufacturer, ItemType T) {
       super(name);
       this.manufacturer = manufacturer;
+      T = type;
     }
   }
 }

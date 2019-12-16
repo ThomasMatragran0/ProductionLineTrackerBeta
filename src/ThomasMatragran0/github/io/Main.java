@@ -4,6 +4,7 @@ package ThomasMatragran0.github.io;
  * @brief Main class for javafx scene and database initialization
  */
 import java.sql.*;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

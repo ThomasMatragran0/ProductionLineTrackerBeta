@@ -8,11 +8,29 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ProductionRecord {
-  int productionNumber;
-  int productID;
-  String serialNumber;
-  DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-  Date dateProduced = new Date();
+   int productionNumber;
+  private int productID;
+  private String serialNumber;
+  private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+  private Date dateProduced = new Date();
+
+  public ProductionRecord(int productID) {
+    this.productID = productID;
+    productionNumber = 0;
+    serialNumber = "0";
+    dateProduced = new Date();
+    // dateFormat.format(dateProduced);
+  }
+
+  public ProductionRecord(
+      int productionNumber, int productID, String serialNumber, Date dateProduced) {
+    this.productID = productID;
+    this.productionNumber = productionNumber;
+    this.serialNumber = serialNumber;
+      dateProduced = new Date();
+    this.dateProduced = dateProduced;
+
+  }
 
   public int getProductionNum() {
     return productionNumber;
@@ -52,23 +70,6 @@ public class ProductionRecord {
 
   public void setProdDate(Date dateProduced) {
     this.dateProduced = dateProduced;
-  }
-
-  public ProductionRecord(int productID) {
-    this.productID = productID;
-    productionNumber = 0;
-    serialNumber = "0";
-    dateProduced = new Date();
-    // dateFormat.format(dateProduced);
-  }
-
-  public ProductionRecord(
-      int productionNumber, int productID, String serialNumber, Date dateProduced) {
-    this.productID = productID;
-    this.productionNumber = productionNumber;
-    this.serialNumber = serialNumber;
-    this.dateProduced = dateProduced;
-    dateProduced = new Date();
   }
 
   public ProductionRecord(Product P, int itemCount) {
