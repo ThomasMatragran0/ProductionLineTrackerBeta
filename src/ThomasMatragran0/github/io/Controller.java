@@ -32,12 +32,11 @@ public class Controller extends Application {
   @FXML public TableColumn<?, ?> existingManufacturingCol;
   @FXML public TableColumn<?, ?> existingTypeCol;
   @FXML public ListView choosingProductListView;
-  static ObservableList<Product> data = FXCollections.observableArrayList();
+  static ObservableList<Product> data;
 
   @FXML
   /** @brief Button Handler for Adding Products to the database */
   void addProductButtonAction(ActionEvent event) {
-    System.out.println("Product Added");
 
     // insert added product into database
     final String JDBC_DRIVER = "org.h2.Driver";
@@ -79,10 +78,18 @@ public class Controller extends Application {
     } catch (SQLException e) {
       e.printStackTrace();
     }
+
+
+    loadProductList();
   }
   /** @brief This method populates GUI features and initializes starting values */
   @FXML
   public void initialize() {
+
+    data = FXCollections.observableArrayList();
+
+
+
 
     final String JDBC_DRIVER = "org.h2.Driver";
     final String DB_URL = "jdbc:h2:./res/ProductionDatabase";
@@ -162,6 +169,14 @@ public class Controller extends Application {
     choosingProductListView.setItems(data);
 
     testMultimedia();
+    loadProductList();
+    loadProductionLog();
+  }
+
+  private void loadProductionLog() {
+  }
+
+  private void loadProductList() {
   }
 
   /**
