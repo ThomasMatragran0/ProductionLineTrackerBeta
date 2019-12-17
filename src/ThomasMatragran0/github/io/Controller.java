@@ -35,8 +35,8 @@ public class Controller extends Application {
   static ObservableList<Product> data;
 
   @FXML
-  /** @brief Button Handler for Adding Products to the database */
-  void addProductButtonAction(ActionEvent event) {
+  /** Button Handler for Adding Products to the database. */
+  void addProductButtonAction() {
 
     // insert added product into database
     final String JDBC_DRIVER = "org.h2.Driver";
@@ -79,17 +79,13 @@ public class Controller extends Application {
       e.printStackTrace();
     }
 
-
     loadProductList();
   }
-  /** @brief This method populates GUI features and initializes starting values */
+  /** This method populates GUI features and initializes starting values. */
   @FXML
   public void initialize() {
 
     data = FXCollections.observableArrayList();
-
-
-
 
     final String JDBC_DRIVER = "org.h2.Driver";
     final String DB_URL = "jdbc:h2:./res/ProductionDatabase";
@@ -172,16 +168,14 @@ public class Controller extends Application {
     loadProductList();
     loadProductionLog();
   }
-
-  private void loadProductionLog() {
-  }
-
-  private void loadProductList() {
-  }
+  /** This void method populates the production log */
+  private void loadProductionLog() {}
+  /** This void method populates the product list */
+  private void loadProductList() {}
 
   /**
-   * @brief This static, void method creates products of different media types and prints them to
-   *     the console
+   * This static, void method creates products of different media types and prints them to the
+   * console.
    */
   public static void testMultimedia() {
     AudioPlayer newAudioProduct =
@@ -223,9 +217,7 @@ public class Controller extends Application {
       System.out.println(pr.getProdDate());
     }
   }
-    /**
-     * @brief This method overrides the start method from Main and uses CSS
-     */
+  /** This method overrides the start method from Main and uses CSS. */
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("ProductionTracker.fxml"));

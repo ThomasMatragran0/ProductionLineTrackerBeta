@@ -1,7 +1,7 @@
 package ThomasMatragran0.github.io;
 /**
  * @author Thomas Matragrano
- * @brief Sets product type constants to be implemented
+ * @brief Sets product type constants to be implemented.
  */
 public enum ItemType {
   AUDIO("Audio", "AU"),
@@ -11,7 +11,11 @@ public enum ItemType {
   ;
   protected String code;
   protected String type;
-
+  /**
+   * This constructor sets values for the enum constants.
+   *
+   * @param Type,Code
+   */
   ItemType(String Type, String Code) {
     code = Code;
     type = Type;

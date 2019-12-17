@@ -13,7 +13,11 @@ public class ProductionRecord {
   private String serialNumber;
   private DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
   private Date dateProduced = new Date();
-
+  /**
+   * This constructor sets the product ID, product number, serial number, and date Produced.
+   *
+   * @param productID
+   */
   public ProductionRecord(int productID) {
     this.productID = productID;
     productionNumber = 0;
@@ -21,7 +25,14 @@ public class ProductionRecord {
     dateProduced = new Date();
     // dateFormat.format(dateProduced);
   }
-
+  /**
+   * This constructor sets the product ID, product number, serial number, and date Produced.
+   *
+   * @param dateProduced
+   * @param productID
+   * @param productionNumber
+   * @param serialNumber
+   */
   public ProductionRecord(
       int productionNumber, int productID, String serialNumber, Date dateProduced) {
     this.productID = productID;
@@ -70,11 +81,20 @@ public class ProductionRecord {
   public void setProdDate(Date dateProduced) {
     this.dateProduced = dateProduced;
   }
-  /** @brief This constructor creates a unique serial number */
+  /**
+   * This constructor creates a unique serial number
+   *
+   * @param itemCount
+   * @param P
+   */
   public ProductionRecord(Product P, int itemCount) {
     serialNumber = P.manufacturer.substring(0, 3) + P.type.code + "0000" + itemCount;
   }
-
+  /**
+   * This String method displays the production record information.
+   *
+   * @return a concatenated String
+   */
   public String toString() {
     return "Prod. Num: "
         + productionNumber

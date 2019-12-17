@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
   @Override
+  /** This void method sets the javafx scene. */
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("ProductionTrackerAlpha.fxml"));
     Scene scene = new Scene(root);
@@ -22,7 +23,7 @@ public class Main extends Application {
     primaryStage.setScene(scene);
     primaryStage.show();
   }
-  /** @brief This method establishes a database connection */
+  /** This method establishes a database connection. */
   public static void main(String[] args) {
     launch(args);
 

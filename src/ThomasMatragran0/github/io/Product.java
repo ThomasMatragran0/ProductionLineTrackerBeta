@@ -2,16 +2,19 @@ package ThomasMatragran0.github.io;
 
 /**
  * @author Thomas Matragrano
- * @brief Parent class that sets, gets, and displays general product features
+ * @brief Abstract, parent class that sets, gets, and displays general product features
  */
-import javafx.scene.canvas.Canvas;
-
 public abstract class Product implements Item {
   int id;
   ItemType type;
   String manufacturer;
   String name;
 
+  /**
+   * This constructor sets the name and audio type
+   *
+   * @param name
+   */
   public Product(String name) {
 
     this.name = name;
@@ -38,12 +41,28 @@ public abstract class Product implements Item {
     return manufacturer;
   }
 
+  /**
+   * This String method displays the Product details.
+   *
+   * @return a concatenated String
+   */
   public String toString() {
     return "Name: " + name + "\nManufacturer: " + manufacturer + "\nType: " + type;
   }
 
+  /**
+   * @author Thomas Matragrano
+   * @brief This widget class extends Product as to create objects from it to test.
+   */
   public static class Widget extends Product {
 
+    /**
+     * This constructor takes parameters from product to instantiate Product objects.
+     *
+     * @param manufacturer
+     * @param name
+     * @param T
+     */
     public Widget(String name, String manufacturer, String T) {
       super(name);
       this.manufacturer = manufacturer;
